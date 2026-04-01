@@ -234,7 +234,8 @@ const DATA = {
     {id:5,title:"Regulation (EU) 2024/1252 — Critical Raw Materials Act (CRMA)",detail:"Official Journal. Entered into force 23 May 2024. Article 28 introduces permanent magnet traceability and passport requirements. Article 28(2) requires the Commission to adopt a labelling format implementing act by 24 November 2026.",type:"official",url:"https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:L_202401252"},
     {id:6,title:"Have Your Say — Digital Product Passport Registry",detail:"European Commission consultation portal entry for the DPP registry initiative under ESPR Article 13.",type:"official",url:"https://ec.europa.eu/info/law/better-regulation/have-your-say/initiatives/16052-Digital-Product-Passport-Registry_en"},
     {id:7,title:"Have Your Say — Digital Product Passport Rules for Service Providers",detail:"European Commission consultation portal entry for DPP rules for service providers.",type:"official",url:"https://ec.europa.eu/info/law/better-regulation/have-your-say/initiatives/14382-Digital-product-passport-rules-for-service-providers_en"},
-    {id:8,title:"CIRPASS2 Initiative — DPP Technical Pilots",detail:"Pre-industrial pilot project testing DPP data models, digital identifiers, and technical standards across product categories.",type:"technical",url:"https://cirpass2.eu/"}
+    {id:8,title:"CIRPASS2 Initiative — DPP Technical Pilots",detail:"Pre-industrial pilot project testing DPP data models, digital identifiers, and technical standards across product categories.",type:"technical",url:"https://cirpass2.eu/"},
+    {id:9,title:"JRC145830 — Methodology for defining data requirements for the Digital Product Passport under the ESPR framework",detail:"Chawla, K. et al. Joint Research Centre, European Commission, 2026. Practical step-by-step methodology for defining DPP data requirements under ESPR. Introduces the five-tier access model (Annex 8) and guidance on granularity levels (Annex 7). Basis for the access tier structure used in the open-dpp schema.",type:"technical",url:"https://data.europa.eu/doi/10.2760/4511279"}
   ],
   tracks:[
     {id:"espr",name:"ESPR Framework",short:"Ecodesign for Sustainable Products",reg:"Reg. (EU) 2024/1781",desc:"The overarching regulation establishing the DPP framework for virtually all physical goods placed on the EU market. Specific data requirements arrive product-by-product via delegated acts.",in_force:"18 July 2024",ms:[
@@ -381,7 +382,7 @@ document.addEventListener('DOMContentLoaded',()=>{
       <div class="w">
         <a class="topbar-title" href="index.html" style="text-decoration:none;color:#fff;">open-dpp</a>
         <nav class="topbar-nav">
-          <a class="topbar-link current" href="tracker.html">Legislation tracker</a>
+          <a class="topbar-link current" href="index.html">Legislation tracker</a>
           <a class="topbar-link" href="schemas/textile/schema.html">Textile schema</a>
           <a class="topbar-link" href="schemas/textile/responsibility_matrix.html">Responsibility matrix</a>
         </nav>
@@ -463,6 +464,21 @@ document.addEventListener('DOMContentLoaded',()=>{
 
         <div class="hint">
           <strong>Updating this tracker:</strong> The canonical data source is <code>data/milestones.json</code>. This file currently embeds data directly for portability — a future release will fetch from the JSON at runtime. To add or edit milestones, update both files. Add milestones to the <code>ms</code> array of the relevant track. Inline citations use <code>&lt;a href="#ref-N" class="cite"&gt;[N]&lt;/a&gt;</code>.
+        </div>
+
+        <div class="refs-section">
+          <h3>All primary sources</h3>
+          <div class="refs-list">
+            ${DATA.refs.filter(Boolean).map(r=>`
+              <div class="ref-row" id="ref-${r.id}">
+                <div class="ref-num">[${r.id}]</div>
+                <div class="ref-body">
+                  <div class="ref-title">${r.title}<span class="rtype rtype-${r.type}">${r.type}</span></div>
+                  <div class="ref-detail">${r.detail}</div>
+                  <a class="ref-link" href="${r.url}" target="_blank" rel="noopener">&#x2197; ${r.url}</a>
+                </div>
+              </div>`).join('')}
+          </div>
         </div>
       </div>
 
