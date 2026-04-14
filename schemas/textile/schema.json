@@ -41,30 +41,38 @@
           "format": "uri",
           "required": true,
           "example": "https://id.gs1.org/01/09506000134352",
-          "description": "GS1 Digital Link URI encoding the product's GTIN as a resolvable web address. Must comply with ISO/IEC 15459. Structure: https://[resolver-domain]/01/[14-digit-GTIN] for model level; append /10/[batch] for batch level; append /21/[serial] for item level."
+          "description": "GS1 Digital Link URI encoding the product's GTIN as a resolvable web address. Must comply with ISO/IEC 15459. Structure: https://[resolver-domain]/01/[14-digit-GTIN] for model level; append /10/[batch] for batch level; append /21/[serial] for item level.",
+          "iri": "@id"
         },
         "product_name": {
           "type": "string",
-          "description": "Commercial product name or model name."
+          "description": "Commercial product name or model name.",
+          "iri": "https://schema.org/name"
         },
         "product_type": {
           "type": "string",
-          "description": "Product type. E.g. 'T-shirt', 'jacket', 'trousers'."
+          "description": "Product type. E.g. 'T-shirt', 'jacket', 'trousers'.",
+          "iri": "https://open-dpp.eu/vocab#productType",
+          "iri_review": true
         },
         "batch_number": {
           "type": "string",
           "description": "Batch or lot number.",
-          "granularity": "batch"
+          "granularity": "batch",
+          "iri": "https://www.gs1.org/voc/hasBatchLotNumber"
         },
         "serial_number": {
           "type": "string",
           "description": "Individual item serial number, where DPP is issued at item level.",
-          "granularity": "item"
+          "granularity": "item",
+          "iri": "https://schema.org/serialNumber",
+          "iri_review": true
         },
         "model_number": {
           "type": "string",
           "description": "Manufacturer model reference.",
-          "granularity": "model"
+          "granularity": "model",
+          "iri": "https://schema.org/model"
         },
         "dpp_level": {
           "type": "string",
@@ -73,7 +81,8 @@
             "batch",
             "item"
           ],
-          "description": "Granularity level of this DPP per Art. 9(2)(d)."
+          "description": "Granularity level of this DPP per Art. 9(2)(d).",
+          "iri": "https://open-dpp.eu/vocab#dppLevel"
         }
       }
     },
@@ -94,28 +103,35 @@
       "properties": {
         "care_instructions": {
           "type": "string",
-          "description": "Washing, drying, ironing and care instructions."
+          "description": "Washing, drying, ironing and care instructions.",
+          "iri": "https://open-dpp.eu/vocab#careInstructions"
         },
         "repair_instructions_url": {
           "type": "string",
           "format": "uri",
-          "description": "URL to repair guidance."
+          "description": "URL to repair guidance.",
+          "iri": "https://schema.org/url",
+          "iri_review": true
         },
         "end_of_life_instructions": {
           "type": "string",
-          "description": "Instructions for return, recycling or disposal at end of life."
+          "description": "Instructions for return, recycling or disposal at end of life.",
+          "iri": "https://open-dpp.eu/vocab#endOfLifeInstructions"
         },
         "language_codes": {
           "type": "array",
           "items": {
             "type": "string"
           },
-          "description": "ISO 639-1 codes for languages in which instructions are available."
+          "description": "ISO 639-1 codes for languages in which instructions are available.",
+          "iri": "https://schema.org/inLanguage"
         },
         "accessible_until": {
           "type": "string",
           "format": "date",
-          "description": "Date until which digital instructions are guaranteed accessible. Minimum 10 years after market placement per Art. 27(7)."
+          "description": "Date until which digital instructions are guaranteed accessible. Minimum 10 years after market placement per Art. 27(7).",
+          "iri": "https://open-dpp.eu/vocab#accessibleUntil",
+          "iri_review": true
         }
       }
     },
@@ -154,27 +170,34 @@
               "eu_responsible_person",
               "dpp_service_provider"
             ],
-            "description": "Role per ESPR Art. 2(42)-(55) and Annex III(g)-(k)."
+            "description": "Role per ESPR Art. 2(42)-(55) and Annex III(g)-(k).",
+            "iri": "https://open-dpp.eu/vocab#operatorRole"
           },
           "operator_name": {
             "type": "string",
-            "description": "Registered trade name or trademark."
+            "description": "Registered trade name or trademark.",
+            "iri": "https://schema.org/name"
           },
           "unique_operator_identifier": {
             "type": "string",
-            "description": "Unique operator identifier per Annex III(h). Interim standard: GS1 GLN (ISO/IEC 15459-4)."
+            "description": "Unique operator identifier per Annex III(h). Interim standard: GS1 GLN (ISO/IEC 15459-4).",
+            "iri": "https://www.gs1.org/voc/gln"
           },
           "postal_address": {
             "type": "string",
-            "description": "Single postal contact point per Art. 27(6)."
+            "description": "Single postal contact point per Art. 27(6).",
+            "iri": "https://schema.org/address"
           },
           "electronic_contact": {
             "type": "string",
-            "description": "Email address or web contact form URL."
+            "description": "Email address or web contact form URL.",
+            "iri": "https://schema.org/email",
+            "iri_review": true
           },
           "eori_number": {
             "type": "string",
-            "description": "EORI number. Required for importers per Annex III(j)."
+            "description": "EORI number. Required for importers per Annex III(j).",
+            "iri": "https://open-dpp.eu/vocab#eoriNumber"
           }
         }
       }
@@ -195,20 +218,26 @@
       "properties": {
         "name": {
           "type": "string",
-          "description": "Registered trade name or trademark."
+          "description": "Registered trade name or trademark.",
+          "iri": "https://schema.org/name"
         },
         "postal_address": {
           "type": "string",
-          "description": "Single postal contact point per Art. 27(6)."
+          "description": "Single postal contact point per Art. 27(6).",
+          "iri": "https://schema.org/address"
         },
         "electronic_contact": {
           "type": "string",
-          "description": "Email address or web contact form URL."
+          "description": "Email address or web contact form URL.",
+          "iri": "https://schema.org/email",
+          "iri_review": true
         },
         "complaints_channel_url": {
           "type": "string",
           "format": "uri",
-          "description": "URL of publicly available complaints channel per Art. 27(9)."
+          "description": "URL of publicly available complaints channel per Art. 27(9).",
+          "iri": "https://schema.org/url",
+          "iri_review": true
         }
       }
     },
@@ -235,21 +264,27 @@
         "properties": {
           "fibre_type": {
             "type": "string",
-            "description": "Fibre type per Reg. (EU) 1007/2011 Annex I. E.g. 'cotton', 'polyester', 'wool'."
+            "description": "Fibre type per Reg. (EU) 1007/2011 Annex I. E.g. 'cotton', 'polyester', 'wool'.",
+            "iri": "https://open-dpp.eu/vocab#fibreType",
+            "iri_review": true
           },
           "percentage": {
             "type": "number",
             "minimum": 0,
             "maximum": 100,
-            "description": "Weight percentage. Percentages must sum to 100% within each component scope."
+            "description": "Weight percentage. Percentages must sum to 100% within each component scope.",
+            "iri": "https://open-dpp.eu/vocab#percentage",
+            "iri_review": true
           },
           "component": {
             "type": "string",
-            "description": "Product component this entry relates to, where composition varies. E.g. 'shell', 'lining', 'padding'."
+            "description": "Product component this entry relates to, where composition varies. E.g. 'shell', 'lining', 'padding'.",
+            "iri": "https://open-dpp.eu/vocab#component"
           },
           "is_recycled": {
             "type": "boolean",
-            "description": "True if this fibre is recycled. Detailed recycled content data captured in field 3.2."
+            "description": "True if this fibre is recycled. Detailed recycled content data captured in field 3.2.",
+            "iri": "https://open-dpp.eu/vocab#isRecycled"
           }
         }
       }
@@ -275,13 +310,16 @@
         "properties": {
           "material": {
             "type": "string",
-            "description": "Material or fibre type. E.g. 'polyester', 'nylon'."
+            "description": "Material or fibre type. E.g. 'polyester', 'nylon'.",
+            "iri": "https://schema.org/material"
           },
           "recycled_percentage": {
             "type": "number",
             "minimum": 0,
             "maximum": 100,
-            "description": "Weight percentage of recycled content for this material."
+            "description": "Weight percentage of recycled content for this material.",
+            "iri": "https://open-dpp.eu/vocab#recycledPercentage",
+            "iri_review": true
           },
           "recycled_source": {
             "type": "string",
@@ -291,15 +329,19 @@
               "mixed",
               "unknown"
             ],
-            "description": "Origin of the recycled material."
+            "description": "Origin of the recycled material.",
+            "iri": "https://open-dpp.eu/vocab#recycledSource",
+            "iri_review": true
           },
           "verification_standard": {
             "type": "string",
-            "description": "Third-party certification standard. E.g. 'GRS 4.0', 'RCS 2.0'."
+            "description": "Third-party certification standard. E.g. 'GRS 4.0', 'RCS 2.0'.",
+            "iri": "https://open-dpp.eu/vocab#verificationStandard"
           },
           "certificate_id": {
             "type": "string",
-            "description": "Certificate or transaction certificate ID issued by the certifying body."
+            "description": "Certificate or transaction certificate ID issued by the certifying body.",
+            "iri": "https://schema.org/identifier"
           }
         }
       }
@@ -326,19 +368,23 @@
         "properties": {
           "material": {
             "type": "string",
-            "description": "Raw material name. E.g. 'cotton lint', 'wool fibre', 'viscose pulp'."
+            "description": "Raw material name. E.g. 'cotton lint', 'wool fibre', 'viscose pulp'.",
+            "iri": "https://schema.org/material"
           },
           "country_of_origin": {
             "type": "string",
-            "description": "ISO 3166-1 alpha-2 country code."
+            "description": "ISO 3166-1 alpha-2 country code.",
+            "iri": "https://schema.org/countryOfOrigin"
           },
           "region": {
             "type": "string",
-            "description": "Sub-national region where relevant for traceability. E.g. 'Gujarat', 'Xinjiang'. Recommended for high-risk materials."
+            "description": "Sub-national region where relevant for traceability. E.g. 'Gujarat', 'Xinjiang'. Recommended for high-risk materials.",
+            "iri": "https://schema.org/addressRegion"
           },
           "farm_or_source_id": {
             "type": "string",
-            "description": "Farm or source facility identifier. Relevant for EUDR-in-scope materials."
+            "description": "Farm or source facility identifier. Relevant for EUDR-in-scope materials.",
+            "iri": "https://open-dpp.eu/vocab#farmOrSourceId"
           }
         }
       }
@@ -376,28 +422,35 @@
               "final_assembly",
               "other"
             ],
-            "description": "Production stage performed at this facility."
+            "description": "Production stage performed at this facility.",
+            "iri": "https://open-dpp.eu/vocab#stage",
+            "iri_review": true
           },
           "facility_name": {
             "type": "string",
-            "description": "Trading name of the facility."
+            "description": "Trading name of the facility.",
+            "iri": "https://schema.org/name"
           },
           "unique_facility_identifier": {
             "type": "string",
-            "description": "Unique facility identifier. Interim standard: GS1 GLN (ISO/IEC 15459-4)."
+            "description": "Unique facility identifier. Interim standard: GS1 GLN (ISO/IEC 15459-4).",
+            "iri": "https://www.gs1.org/voc/gln"
           },
           "country": {
             "type": "string",
-            "description": "ISO 3166-1 alpha-2 country code."
+            "description": "ISO 3166-1 alpha-2 country code.",
+            "iri": "https://schema.org/addressCountry"
           },
           "address": {
             "type": "string",
-            "description": "Street address of the facility."
+            "description": "Street address of the facility.",
+            "iri": "https://schema.org/address"
           },
           "tier": {
             "type": "integer",
             "minimum": 1,
-            "description": "Supply chain tier. Tier 1 = direct supplier to brand."
+            "description": "Supply chain tier. Tier 1 = direct supplier to brand.",
+            "iri": "https://open-dpp.eu/vocab#tier"
           }
         }
       }
@@ -419,11 +472,15 @@
         "total_kgco2e": {
           "type": "number",
           "minimum": 0,
-          "description": "Total carbon footprint in kg CO2 equivalent."
+          "description": "Total carbon footprint in kg CO2 equivalent.",
+          "iri": "https://open-dpp.eu/vocab#totalKgCO2e",
+          "iri_review": true
         },
         "calculation_methodology": {
           "type": "string",
-          "description": "Standard used. E.g. 'PEF Category Rules for Apparel and Footwear', 'ISO 14067:2018'."
+          "description": "Standard used. E.g. 'PEF Category Rules for Apparel and Footwear', 'ISO 14067:2018'.",
+          "iri": "https://open-dpp.eu/vocab#calculationMethodology",
+          "iri_review": true
         },
         "scope_boundary": {
           "type": "string",
@@ -432,11 +489,14 @@
             "cradle_to_grave",
             "cradle_to_retailer"
           ],
-          "description": "System boundary of the carbon footprint calculation."
+          "description": "System boundary of the carbon footprint calculation.",
+          "iri": "https://open-dpp.eu/vocab#scopeBoundary",
+          "iri_review": true
         },
         "reference_year": {
           "type": "integer",
-          "description": "Year to which the carbon footprint data relates."
+          "description": "Year to which the carbon footprint data relates.",
+          "iri": "https://open-dpp.eu/vocab#referenceYear"
         }
       }
     },
@@ -456,11 +516,15 @@
         "total_litres": {
           "type": "number",
           "minimum": 0,
-          "description": "Total water use in litres per unit."
+          "description": "Total water use in litres per unit.",
+          "iri": "https://open-dpp.eu/vocab#totalLitres",
+          "iri_review": true
         },
         "calculation_methodology": {
           "type": "string",
-          "description": "Standard used. E.g. 'ISO 14046:2014'."
+          "description": "Standard used. E.g. 'ISO 14046:2014'.",
+          "iri": "https://open-dpp.eu/vocab#calculationMethodology",
+          "iri_review": true
         },
         "scope_boundary": {
           "type": "string",
@@ -469,7 +533,9 @@
             "cradle_to_grave",
             "cradle_to_retailer"
           ],
-          "description": "System boundary of the water use calculation."
+          "description": "System boundary of the water use calculation.",
+          "iri": "https://open-dpp.eu/vocab#scopeBoundary",
+          "iri_review": true
         }
       }
     },
@@ -496,31 +562,40 @@
         "properties": {
           "substance_name": {
             "type": "string",
-            "description": "IUPAC name, or another international name where IUPAC is unavailable. Art. 7(5)(a)(i)."
+            "description": "IUPAC name, or another international name where IUPAC is unavailable. Art. 7(5)(a)(i).",
+            "iri": "https://schema.org/name"
           },
           "other_names": {
             "type": "array",
             "items": {
               "type": "string"
             },
-            "description": "Usual name, trade name or abbreviation. Art. 7(5)(a)(ii)."
+            "description": "Usual name, trade name or abbreviation. Art. 7(5)(a)(ii).",
+            "iri": "https://schema.org/alternateName"
           },
           "cas_number": {
             "type": "string",
-            "description": "CAS Registry Number. Art. 7(5)(a)(iv). Must come from chemical supplier Safety Data Sheet."
+            "description": "CAS Registry Number. Art. 7(5)(a)(iv). Must come from chemical supplier Safety Data Sheet.",
+            "iri": "https://open-dpp.eu/vocab#casNumber",
+            "iri_review": true
           },
           "ec_number": {
             "type": "string",
-            "description": "European Community number (EINECS, ELINCS, NLP or ECHA-assigned). Art. 7(5)(a)(iii)."
+            "description": "European Community number (EINECS, ELINCS, NLP or ECHA-assigned). Art. 7(5)(a)(iii).",
+            "iri": "https://open-dpp.eu/vocab#ecNumber",
+            "iri_review": true
           },
           "location_in_product": {
             "type": "string",
-            "description": "Component or part in which the substance is present. Art. 7(5)(b)."
+            "description": "Component or part in which the substance is present. Art. 7(5)(b).",
+            "iri": "https://open-dpp.eu/vocab#locationInProduct"
           },
           "concentration_ppm": {
             "type": "number",
             "minimum": 0,
-            "description": "Concentration in parts per million (mg/kg). Art. 7(5)(c). REACH floor: 1000 ppm for SVHC."
+            "description": "Concentration in parts per million (mg/kg). Art. 7(5)(c). REACH floor: 1000 ppm for SVHC.",
+            "iri": "https://open-dpp.eu/vocab#concentrationPpm",
+            "iri_review": true
           },
           "espr_category": {
             "type": "string",
@@ -530,15 +605,18 @@
               "hazardous_substance",
               "other"
             ],
-            "description": "Classification under ESPR Art. 2(27)."
+            "description": "Classification under ESPR Art. 2(27).",
+            "iri": "https://open-dpp.eu/vocab#esprCategory"
           },
           "safe_use_instructions": {
             "type": "string",
-            "description": "Instructions for safe use in relation to this substance. Art. 7(5)(d)."
+            "description": "Instructions for safe use in relation to this substance. Art. 7(5)(d).",
+            "iri": "https://open-dpp.eu/vocab#safeUseInstructions"
           },
           "end_of_life_handling": {
             "type": "string",
-            "description": "Information relevant for disassembly, recycling and end-of-life management. Art. 7(5)(e)."
+            "description": "Information relevant for disassembly, recycling and end-of-life management. Art. 7(5)(e).",
+            "iri": "https://open-dpp.eu/vocab#endOfLifeHandling"
           }
         }
       }
@@ -559,24 +637,29 @@
       "properties": {
         "reach_compliant": {
           "type": "boolean",
-          "description": "Declaration of compliance with REACH Annex XVII restrictions."
+          "description": "Declaration of compliance with REACH Annex XVII restrictions.",
+          "iri": "https://open-dpp.eu/vocab#reachCompliant"
         },
         "rsl_standard": {
           "type": "string",
-          "description": "Additional RSL standard applied. E.g. 'ZDHC MRSL 3.1', 'bluesign RSL', 'OEKO-TEX RSL'."
+          "description": "Additional RSL standard applied. E.g. 'ZDHC MRSL 3.1', 'bluesign RSL', 'OEKO-TEX RSL'.",
+          "iri": "https://open-dpp.eu/vocab#rslStandard"
         },
         "test_report_reference": {
           "type": "string",
-          "description": "Reference to the RSL test report supporting this declaration."
+          "description": "Reference to the RSL test report supporting this declaration.",
+          "iri": "https://open-dpp.eu/vocab#testReportReference"
         },
         "tested_by": {
           "type": "string",
-          "description": "Name of the accredited laboratory that conducted RSL testing."
+          "description": "Name of the accredited laboratory that conducted RSL testing.",
+          "iri": "https://schema.org/agent"
         },
         "test_date": {
           "type": "string",
           "format": "date",
-          "description": "ISO 8601 date of the most recent RSL test."
+          "description": "ISO 8601 date of the most recent RSL test.",
+          "iri": "https://open-dpp.eu/vocab#testDate"
         }
       }
     },
@@ -597,6 +680,8 @@
       "properties": {
         "pilling_resistance": {
           "type": "object",
+          "iri": "https://open-dpp.eu/vocab#pillingResistance",
+          "iri_review": true,
           "properties": {
             "score": {
               "type": "integer",
@@ -605,7 +690,8 @@
             },
             "test_method": {
               "type": "string",
-              "description": "E.g. 'ISO 12945-2:2020'."
+              "description": "E.g. 'ISO 12945-2:2020'.",
+              "iri": "https://schema.org/measurementTechnique"
             },
             "test_cycles": {
               "type": "integer"
@@ -614,6 +700,8 @@
         },
         "colourfastness_washing": {
           "type": "object",
+          "iri": "https://open-dpp.eu/vocab#colourfastnessWashing",
+          "iri_review": true,
           "properties": {
             "score": {
               "type": "integer",
@@ -622,12 +710,15 @@
             },
             "test_method": {
               "type": "string",
-              "description": "E.g. 'ISO 105-C06:2010'."
+              "description": "E.g. 'ISO 105-C06:2010'.",
+              "iri": "https://schema.org/measurementTechnique"
             }
           }
         },
         "colourfastness_rubbing": {
           "type": "object",
+          "iri": "https://open-dpp.eu/vocab#colourfastnessRubbing",
+          "iri_review": true,
           "properties": {
             "dry_score": {
               "type": "integer",
@@ -641,14 +732,16 @@
             },
             "test_method": {
               "type": "string",
-              "description": "E.g. 'ISO 105-X12:2016'."
+              "description": "E.g. 'ISO 105-X12:2016'.",
+              "iri": "https://schema.org/measurementTechnique"
             }
           }
         },
         "expected_lifetime_washes": {
           "type": "integer",
           "minimum": 0,
-          "description": "Expected product lifetime in number of wash cycles."
+          "description": "Expected product lifetime in number of wash cycles.",
+          "iri": "https://open-dpp.eu/vocab#expectedLifetimeWashes"
         }
       }
     },
@@ -673,35 +766,46 @@
           "type": "number",
           "minimum": 0,
           "maximum": 10,
-          "description": "Repairability score on a 0-10 scale, where defined by delegated act."
+          "description": "Repairability score on a 0-10 scale, where defined by delegated act.",
+          "iri": "https://open-dpp.eu/vocab#repairabilityScore",
+          "iri_review": true
         },
         "spare_parts_available": {
           "type": "boolean",
-          "description": "Whether spare parts (e.g. buttons, zips, patches) are available for purchase."
+          "description": "Whether spare parts (e.g. buttons, zips, patches) are available for purchase.",
+          "iri": "https://open-dpp.eu/vocab#sparePartsAvailable"
         },
         "spare_parts_url": {
           "type": "string",
           "format": "uri",
-          "description": "URL to spare parts catalogue or ordering page."
+          "description": "URL to spare parts catalogue or ordering page.",
+          "iri": "https://schema.org/url",
+          "iri_review": true
         },
         "repair_instructions_url": {
           "type": "string",
           "format": "uri",
-          "description": "URL to repair instructions or technical repair documentation."
+          "description": "URL to repair instructions or technical repair documentation.",
+          "iri": "https://schema.org/url",
+          "iri_review": true
         },
         "repair_network_url": {
           "type": "string",
           "format": "uri",
-          "description": "URL to authorised or recommended repair network."
+          "description": "URL to authorised or recommended repair network.",
+          "iri": "https://schema.org/url",
+          "iri_review": true
         },
         "last_updated": {
           "type": "string",
           "format": "date",
-          "description": "ISO 8601 date of most recent update to this field."
+          "description": "ISO 8601 date of most recent update to this field.",
+          "iri": "https://schema.org/dateModified"
         },
         "updated_by": {
           "type": "string",
-          "description": "Actor that last updated this field. E.g. 'manufacturer', 'independent_operator'."
+          "description": "Actor that last updated this field. E.g. 'manufacturer', 'independent_operator'.",
+          "iri": "https://schema.org/agent"
         }
       }
     },
@@ -726,37 +830,48 @@
           "type": "number",
           "minimum": 0,
           "maximum": 100,
-          "description": "Estimated recyclability rate as a percentage of product weight."
+          "description": "Estimated recyclability rate as a percentage of product weight.",
+          "iri": "https://open-dpp.eu/vocab#recyclabilityRate",
+          "iri_review": true
         },
         "disassembly_instructions": {
           "type": "string",
-          "description": "Instructions for disassembly to facilitate sorting and recycling. Art. 7(2)(b)(iii)."
+          "description": "Instructions for disassembly to facilitate sorting and recycling. Art. 7(2)(b)(iii).",
+          "iri": "https://open-dpp.eu/vocab#disassemblyInstructions"
         },
         "take_back_scheme_url": {
           "type": "string",
           "format": "uri",
-          "description": "URL to manufacturer or retailer take-back or collection scheme."
+          "description": "URL to manufacturer or retailer take-back or collection scheme.",
+          "iri": "https://schema.org/url",
+          "iri_review": true
         },
         "waste_sorting_code": {
           "type": "string",
-          "description": "Waste sorting classification code relevant to end-of-life handling."
+          "description": "Waste sorting classification code relevant to end-of-life handling.",
+          "iri": "https://open-dpp.eu/vocab#wasteSortingCode",
+          "iri_review": true
         },
         "contains_non_recyclable_components": {
           "type": "boolean",
-          "description": "Whether the product contains components that cannot currently be recycled."
+          "description": "Whether the product contains components that cannot currently be recycled.",
+          "iri": "https://open-dpp.eu/vocab#containsNonRecyclableComponents"
         },
         "non_recyclable_components_description": {
           "type": "string",
-          "description": "Description of non-recyclable components, where present."
+          "description": "Description of non-recyclable components, where present.",
+          "iri": "https://schema.org/description"
         },
         "last_updated": {
           "type": "string",
           "format": "date",
-          "description": "ISO 8601 date of most recent update."
+          "description": "ISO 8601 date of most recent update.",
+          "iri": "https://schema.org/dateModified"
         },
         "updated_by": {
           "type": "string",
-          "description": "Actor that last updated this field."
+          "description": "Actor that last updated this field.",
+          "iri": "https://schema.org/agent"
         }
       }
     },
@@ -782,25 +897,30 @@
         "properties": {
           "standard_name": {
             "type": "string",
-            "description": "Certification standard name. E.g. 'GOTS 7.0', 'OEKO-TEX STANDARD 100', 'GRS 4.0'."
+            "description": "Certification standard name. E.g. 'GOTS 7.0', 'OEKO-TEX STANDARD 100', 'GRS 4.0'.",
+            "iri": "https://schema.org/name"
           },
           "certificate_id": {
             "type": "string",
-            "description": "Certificate number issued by the certifying body."
+            "description": "Certificate number issued by the certifying body.",
+            "iri": "https://schema.org/identifier"
           },
           "issued_by": {
             "type": "string",
-            "description": "Name of the certifying body."
+            "description": "Name of the certifying body.",
+            "iri": "https://schema.org/issuer"
           },
           "valid_from": {
             "type": "string",
             "format": "date",
-            "description": "ISO 8601 date from which the certificate is valid."
+            "description": "ISO 8601 date from which the certificate is valid.",
+            "iri": "https://schema.org/validFrom"
           },
           "valid_until": {
             "type": "string",
             "format": "date",
-            "description": "ISO 8601 date on which the certificate expires."
+            "description": "ISO 8601 date on which the certificate expires.",
+            "iri": "https://schema.org/validThrough"
           },
           "scope": {
             "type": "string",
@@ -809,12 +929,16 @@
               "facility",
               "transaction"
             ],
-            "description": "Whether this certificate applies to the product, a supply chain facility, or a specific transaction."
+            "description": "Whether this certificate applies to the product, a supply chain facility, or a specific transaction.",
+            "iri": "https://open-dpp.eu/vocab#scope",
+            "iri_review": true
           },
           "certificate_url": {
             "type": "string",
             "format": "uri",
-            "description": "URL to the publicly verifiable certificate record."
+            "description": "URL to the publicly verifiable certificate record.",
+            "iri": "https://schema.org/url",
+            "iri_review": true
           }
         }
       }
@@ -845,25 +969,30 @@
             "second_hand",
             "end_of_life"
           ],
-          "description": "Current lifecycle status. Textile delegated act will define the applicable set - battery passport uses 'original', 'repurposed', 're-used', 'remanufactured', 'waste' as reference."
+          "description": "Current lifecycle status. Textile delegated act will define the applicable set - battery passport uses 'original', 'repurposed', 're-used', 'remanufactured', 'waste' as reference.",
+          "iri": "https://open-dpp.eu/vocab#status"
         },
         "status_date": {
           "type": "string",
           "format": "date",
-          "description": "ISO 8601 date on which the current status was set."
+          "description": "ISO 8601 date on which the current status was set.",
+          "iri": "https://open-dpp.eu/vocab#statusDate"
         },
         "intervention_description": {
           "type": "string",
-          "description": "Description of the repair, refurbishment or other lifecycle intervention that triggered the status change."
+          "description": "Description of the repair, refurbishment or other lifecycle intervention that triggered the status change.",
+          "iri": "https://schema.org/description"
         },
         "updated_by": {
           "type": "string",
-          "description": "Actor that set the current status. E.g. 'manufacturer', 'professional_repairer', 'independent_operator'."
+          "description": "Actor that set the current status. E.g. 'manufacturer', 'professional_repairer', 'independent_operator'.",
+          "iri": "https://schema.org/agent"
         },
         "previous_dpp_reference": {
           "type": "string",
           "format": "uri",
-          "description": "URI of the original or previous DPP, where this DPP was created following a lifecycle intervention per Art. 11(d)."
+          "description": "URI of the original or previous DPP, where this DPP was created following a lifecycle intervention per Art. 11(d).",
+          "iri": "https://open-dpp.eu/vocab#previousDppReference"
         }
       }
     },
@@ -884,29 +1013,36 @@
       "properties": {
         "schema_version": {
           "type": "string",
-          "description": "Version of this schema used to create this DPP instance. E.g. '0.4.0'."
+          "description": "Version of this schema used to create this DPP instance. E.g. '0.4.0'.",
+          "iri": "https://open-dpp.eu/vocab#schemaVersion",
+          "iri_review": true
         },
         "dpp_created_date": {
           "type": "string",
           "format": "date-time",
-          "description": "ISO 8601 datetime at which this DPP was first created."
+          "description": "ISO 8601 datetime at which this DPP was first created.",
+          "iri": "https://schema.org/dateCreated"
         },
         "dpp_last_updated": {
           "type": "string",
           "format": "date-time",
-          "description": "ISO 8601 datetime of the most recent update to any field in this DPP."
+          "description": "ISO 8601 datetime of the most recent update to any field in this DPP.",
+          "iri": "https://schema.org/dateModified"
         },
         "responsible_economic_operator": {
           "type": "string",
-          "description": "Name of the economic operator responsible for this DPP per Art. 10(4). Typically the manufacturer."
+          "description": "Name of the economic operator responsible for this DPP per Art. 10(4). Typically the manufacturer.",
+          "iri": "https://open-dpp.eu/vocab#responsibleEconomicOperator"
         },
         "language": {
           "type": "string",
-          "description": "ISO 639-1 language code of the primary language of this DPP."
+          "description": "ISO 639-1 language code of the primary language of this DPP.",
+          "iri": "https://schema.org/inLanguage"
         },
         "registry_unique_registration_identifier": {
           "type": "string",
-          "description": "Unique registration identifier issued by the EU DPP registry upon upload per Art. 13(5). Populated after registry submission."
+          "description": "Unique registration identifier issued by the EU DPP registry upon upload per Art. 13(5). Populated after registry submission.",
+          "iri": "https://open-dpp.eu/vocab#registryUniqueRegistrationIdentifier"
         }
       }
     }
