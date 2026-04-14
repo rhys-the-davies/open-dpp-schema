@@ -24,10 +24,6 @@ schema.org terms are stable, widely implemented, and well-understood by linked d
 
 UNTP (UN Transparency Protocol) defines relevant concepts including `EmissionsPerformance` and supply chain classes. However, the UNTP vocabulary IRIs currently use the subdomain `https://test.uncefact.org`, which is a test environment and not a stable namespace for production use. Until UNTP vocabulary IRIs are confirmed at `https://vocabulary.uncefact.org/` (the stable base), UNTP terms are not used. Carbon footprint and supply chain properties are flagged as mapping under review for this reason.
 
-### Why not ECHA vocabulary
-
-The European Chemicals Agency does not publish a Linked Data vocabulary or RDF namespace. CAS Registry Numbers and EC numbers are identifiers maintained by third-party registries (Chemical Abstracts Service and ECHA respectively) but neither exposes these as dereferenceable IRI namespaces. `dpp:casNumber` and `dpp:ecNumber` are therefore interim terms.
-
 ### Why not EU Reg 1007/2011 terms for fibre types
 
 Regulation (EU) 1007/2011 defines the authoritative list of textile fibre names (Annex I), but it exists only as a legal text - there is no machine-readable ontology or IRI namespace associated with it. `dpp:fibreType` is therefore interim.
